@@ -33,25 +33,32 @@
         </nav>
     </div>
 
-    <div class="container mt-5 main">
-        <div class="hero-section text-center">
-            <button id="login-btn" class="btn btn-primary me-5">Log In</button>
-            <button id="signup-btn" class="btn btn-outline-primary">Sign Up</button>
-        </div>
+    <div class="main">
+        <div class="container mt-5 main">
+            <div class="hero-section text-center">
+                <button id="login-btn" class="btn btn-primary me-5">Log In</button>
+                <button id="signup-btn" class="btn btn-outline-primary">Sign Up</button>
+            </div>
 
         <!-- Log In -->
         <div id="login-section" class="login-section mt-5" style="display: block;">
             <h2 class="text-center">Autentificare</h2>
-            <form action="#">
+            <form action="#" method="POST">
                 <div class="mb-4">
                     <input type="text" class="form-control" placeholder="Email" required>
                 </div>
                 <div class="mb-3">
                     <input type="password" class="form-control" placeholder="Password" required>
                 </div>
+                <div class="mb-3">
+                    <input type="checkbox" id="remember-me" name="remember-me">
+                    <label for="remember-me">Remember me</label>
+                </div>
                 <button type="submit" class="btn btn-primary w-100">Submit</button>
             </form>
         </div>
+
+
 
         <!-- Sign Up -->
         <div id="signup-section" class="signup-section mt-4" style="display: none;">
@@ -73,6 +80,7 @@
             </form>
         </div>
     </div>
+    </div>
 
     <div class="footer">
         <div class="container">
@@ -90,5 +98,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/js/forms.js"></script>
+    <script src="/js/remember_me.js"></script>
 </body>
 </html>

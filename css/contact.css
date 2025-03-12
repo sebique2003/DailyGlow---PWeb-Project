@@ -1,0 +1,233 @@
+/* Reset general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* Header section */
+.custom-navbar {
+    background-color: #007bff;
+    padding: 40px 0 !important;
+}
+
+.custom-navbar .navbar-brand {
+    font-size: 2.2rem;
+    color: #ffffff !important;
+    font-weight: bold;
+}
+
+.navbar-brand:hover{
+    color: #000000 !important;
+}
+
+.navbar-nav {
+    display: flex;
+    gap: 22px;
+}
+
+.navbar-nav .nav-item .nav-link {
+    font-size: 1.6rem;
+    color: #ffffff !important;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    background-color: #0057b3a3 !important;
+}
+
+.navbar-toggler {
+    font-size: 1.6rem !important;
+    border:hidden !important;
+}
+
+/* Dropdown */
+.navbar-nav .nav-item.dropdown .nav-link {
+    color: #ffffff !important;
+    font-weight: 500;
+}
+
+.navbar-nav .nav-item.dropdown .nav-link:hover {
+    color: #e4e5e6 !important;
+}
+
+.navbar-nav .nav-item.dropdown .dropdown-menu {
+    background-color: #007bff;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-nav .nav-item.dropdown .dropdown-item {
+    font-size: 1.2rem;
+    padding: 3px 5px;
+    color: #fff;
+    background-color: #007bff;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.navbar-nav .nav-item.dropdown .dropdown-item:hover {
+    background-color: #0056b3;
+    color: #fff;
+}
+
+/* Main Section*/
+.main {
+    max-width: 600px !important;
+    margin: 40px auto;
+    padding: 35px !important;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.566);
+}
+
+.main h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.main p.lead {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    margin-bottom: 30px;
+}
+
+/* Form */
+form .form-label {
+    font-size: 1.1rem;
+    color: #34495e;
+}
+
+form .form-control {
+    resize: none;
+    background-color:#fcfcfcff;
+    font-size: 1rem;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #bdc3c7;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+form .form-control:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+}
+
+form .btn {
+    background-color: #3498db;
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+form .btn:hover {
+    background-color: #2980b9;
+}
+
+/* Footer Section */
+.footer {
+    background-color: #007bff;
+    padding: 50px 0;
+    color: #fff;
+    text-align: center;
+    margin-top: auto;
+}
+
+.footer .footer-links a {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+.footer .footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer .newsletter-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.footer .newsletter-form input {
+    max-width: 350px;
+    margin-right: 10px;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+.footer .subscribe-btn {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.footer .subscribe-btn:hover {
+    background-color: #218838;
+}
+
+.footer .footer-text {
+    margin-top: 20px;
+    font-size: 1.1rem;
+}
+
+/* Responsivitate */
+@media (max-width: 768px) {
+    .custom-navbar .navbar-brand {
+        font-size: 2rem;
+    }
+
+    .navbar-nav .nav-item .nav-link {
+        font-size: 1.2rem;
+    }
+
+    .navbar-nav {
+        margin-top: 10px;
+        display: flex;
+        align-items: left;
+    }
+
+    .navbar-nav .nav-item {
+        margin-right: 15px;
+    }
+
+    .navbar-nav .nav-item.dropdown {
+        position: relative;
+    }
+
+    .navbar-nav .nav-item.dropdown .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+    }
+
+    .navbar-nav .nav-item.dropdown .dropdown-item {
+        font-size: 1.1rem;
+        padding: 5px 8px;
+    }
+}

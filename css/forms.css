@@ -48,12 +48,11 @@ body {
     border:hidden !important;
 }
 
-
 /* Main */
 .login-section, .signup-section {
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.566);
+    box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.566);
     padding: 75px;
     margin-top: 35px;
     min-width: 350px;
@@ -82,6 +81,21 @@ form .form-control:focus {
     border-color: #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+label[for="remember-me"] {
+    font-size: 1.2rem;
+    color: #333;
+    vertical-align: middle;
+    font-weight: 500;
+}
+
 
 /* Butoane */
 .btn-primary {

@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nume App</title>
-    <link rel="stylesheet" href="/css/homepage.css">
-    <link rel="icon" type="image/icon" href="#">
+    <title>Log In | Sign Up</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/forms.css">
 </head>
 <body>
 
@@ -28,36 +27,50 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/html/contact.html">Contact</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Account
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="/html/forms.html">Log In</a></li>
-                                <li><a class="dropdown-item" href="/html/forms.html">Sign Up</a></li>
-                            </ul>
-                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </div>
 
-    <div class="main">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 col-md-12 mb-4">
-                    <img src="/trash/test.jpg" alt="test" class="img-fluid">
+    <div class="container mt-5 main">
+        <div class="hero-section text-center">
+            <button id="login-btn" class="btn btn-primary me-5">Log In</button>
+            <button id="signup-btn" class="btn btn-outline-primary">Sign Up</button>
+        </div>
+
+        <!-- Log In -->
+        <div id="login-section" class="login-section mt-5" style="display: block;">
+            <h2 class="text-center">Autentificare</h2>
+            <form action="#">
+                <div class="mb-4">
+                    <input type="text" class="form-control" placeholder="Email" required>
                 </div>
-                <div class="col-lg-6 col-md-12">
-                    <h1 class="h1">Header cu descriere app.</h1>
-                    <p class="p1">
-                        Paragraf secundar despre cum ajuta aceasta aplicatie santatea omului
-                        si de ce e important sa ne gestionam alimentatia.
-                    </p>
-                    <a href="dashboard.html" class="cta-button">Începe acum!</a>
+                <div class="mb-3">
+                    <input type="password" class="form-control" placeholder="Password" required>
                 </div>
-            </div>
+                <button type="submit" class="btn btn-primary w-100">Submit</button>
+            </form>
+        </div>
+
+        <!-- Sign Up -->
+        <div id="signup-section" class="signup-section mt-4" style="display: none;">
+            <h2 class="text-center">Înregistrare</h2>
+            <form action="#">
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Username" required>
+                </div>
+                <div class="mb-3">
+                    <input type="email" class="form-control" placeholder="Email" required>
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" placeholder="Password" required>
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" placeholder="Confirm password" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Submit</button>
+            </form>
         </div>
     </div>
 
@@ -76,5 +89,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/forms.js"></script>
 </body>
 </html>

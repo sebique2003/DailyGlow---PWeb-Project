@@ -6,21 +6,22 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    width: 100wh;
+    width: 100vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
 }
 
 /* Header section */
 .custom-navbar {
     background-color: #007bff;
-    padding: 40px 0 !important;
+    padding: 20px 10px !important;
 }
 
 .custom-navbar .navbar-brand {
-    font-size: 2.2rem;
+    font-size: 1.2rem !important;
     color: #ffffff !important;
     font-weight: bold;
 }
@@ -31,12 +32,13 @@ body {
 
 .navbar-nav {
     display: flex;
-    gap: 22px;
+    gap: 15px;
 }
 
 .navbar-nav .nav-item .nav-link {
-    font-size: 1.6rem;
+    font-size: 1rem;
     color: #ffffff !important;
+    display: inline-block;
 }
 
 .navbar-nav .nav-item .nav-link:hover {
@@ -44,35 +46,37 @@ body {
 }
 
 .navbar-toggler {
-    font-size: 1.6rem !important;
+    font-size: 1.2rem !important;
     border:hidden !important;
 }
 
 /* Main */
 .login-section, .signup-section {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.566);
-    padding: 75px;
-    margin-top: 35px;
-    min-width: 350px;
-    max-width: 750px;
-    height: auto;
     margin: 0 auto;
+    max-width: 550px !important;
+    padding: 45px !important;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.789);
+}
+
+.main #login-btn, #signup-btn {
+    font-size: 0.65rem;
 }
 
 h2 {
     color: #333;
-    font-size: 1.7rem;
+    font-size: 1.4rem;
     margin-bottom: 25px;
 }
+
 
 form .form-control {
     background-color: #fcfcfcff;
     border-radius: 8px;
     border: 1px solid #ccc;
     padding: 20px;
-    font-size: 18px;
+    font-size: 0.85rem;
     margin-bottom: 30px;
     transition: border 0.3s ease;
 }
@@ -83,26 +87,25 @@ form .form-control:focus {
 }
 
 input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
+    width: 13.5px;
+    height: 13.5px;
     margin-right: 10px;
     vertical-align: middle;
 }
 
 label[for="remember-me"] {
-    font-size: 1.2rem;
+    font-size: 0.8rem;
     color: #333;
     vertical-align: middle;
     font-weight: 500;
 }
 
-
-/* Butoane */
 .btn-primary {
     background-color: #007bff;
     border-color: #007bff;
+    margin-top: 5px;
     padding: 12px 24px;
-    font-size: 16px;
+    font-size: 0.85rem;
     border-radius: 30px;
 }
 
@@ -121,21 +124,27 @@ label[for="remember-me"] {
 
 /* Footer section */
 .footer {
-    margin-top: 75px !important;
+    position: relative;
     background-color: #007bff;
-    padding: 50px 0;
+    padding: 20px 0px !important;
+    margin-top: 70px;
     color: #fff;
     text-align: center;
-    margin-top: auto;
+}
+
+.footer .footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
 }
 
 .footer .footer-links a {
-    display: flex;
-    flex-direction: column;
-    margin-right: 20px;
+    display: inline-block;
+    margin-right: 15px;
     text-decoration: none;
     color: #fff;
-    font-size: 1.2rem;
+    font-size: 0.7rem;
 }
 
 .footer .footer-links a:hover {
@@ -145,22 +154,22 @@ label[for="remember-me"] {
 .footer .newsletter-form {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 .footer .newsletter-form input {
-    max-width: 350px;
+    max-width: 200px;
     margin-right: 10px;
-    padding: 10px;
-    font-size: 1rem;
+    padding: 8px;
+    font-size: 0.6rem;
 }
 
 .footer .subscribe-btn {
-    padding: 10px 20px;
+    padding: 8px;
     background-color: #28a745;
     color: #fff;
     border: none;
-    font-size: 1rem;
+    font-size: 0.6rem;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -171,27 +180,124 @@ label[for="remember-me"] {
 }
 
 .footer .footer-text {
-    margin-top: 20px;
-    font-size: 1.1rem;
+    margin-top: 15px;
+    font-size: 0.6rem;
 }
 
 /* Responsivitate */
 @media (max-width: 768px) {
     .custom-navbar .navbar-brand {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 
     .navbar-nav .nav-item .nav-link {
-        font-size: 1.2rem;
+        font-size: 0.8rem;
     }
-
+    
     .navbar-nav {
-        margin-top: 10px;
         display: flex;
         align-items: left;
+        gap: 2px;
     }
 
     .navbar-nav .nav-item {
-        margin-right: 15px;
+        margin-right: 12px;
+    }
+
+    .login-section, .signup-section {
+        max-width: 95%;
+        margin: 15px auto;
+        padding: 25px !important;
+        box-shadow: none;
+    }
+
+    .main h2 {
+        font-size: 1.25rem;
+        margin-bottom: 35px;
+    }
+
+    .main #login-btn, #signup-btn {
+        font-size: 0.65rem;
+    }
+
+    form .form-control {
+        padding: 15px;
+        font-size: 0.75rem;
+    }
+
+    .btn-primary {
+        margin-top: 5px;
+        padding: 10px 20px;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .custom-navbar .navbar-brand {
+        font-size: 1.5rem !important;
+    }
+
+    .navbar-nav .nav-item .nav-link {
+        font-size: 0.7rem;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        align-items: left;
+        gap: 2px;
+
+    }
+
+    .navbar-nav .nav-item {
+        margin-bottom: 10px;
+    }
+
+    .login-section, .signup-section {
+        max-width: 100% !important;
+        margin: 15px auto;
+        padding: 10px !important;
+        box-shadow: none;
+    }
+
+    .main h2 {
+        font-size: 1.5rem;
+        margin-bottom: 25px;
+    }
+
+    .main #login-btn, #signup-btn {
+        font-size: 0.75rem;
+    }
+
+    form .form-control {
+        padding: 15px;
+        font-size: 0.65rem;
+    }
+
+    .btn-primary {
+        margin-top: 5px;
+        padding: 10px 20px;
+        font-size: 0.75rem;
+    }
+
+    .footer .footer-links {
+        gap: 5px;
+    }
+
+    .footer .footer-links a {
+        font-size: 0.6rem;
+    }
+
+    .footer .newsletter-form input {
+        width: 100%;
+        font-size: 0.6rem;
+    }
+
+    .footer .subscribe-btn {
+        font-size: 0.6rem;
+        width: 100%;
+    }
+
+    .footer .footer-text {
+        font-size: 0.5rem;
     }
 }

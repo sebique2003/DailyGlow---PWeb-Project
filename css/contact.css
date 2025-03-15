@@ -65,6 +65,7 @@ body {
     border: none;
     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.37) !important;
     font-size: 1rem;
+    width: fit-content !important;
 }
 
 .navbar-nav .nav-item.dropdown .dropdown-item {

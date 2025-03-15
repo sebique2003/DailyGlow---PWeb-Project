@@ -52,12 +52,16 @@ body {
 
 /* Main */
 .login-section, .signup-section {
+    position: relative;
+    top: 15px;
+    bottom: 5px;
     margin: 0 auto;
     max-width: 550px !important;
     padding: 45px !important;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.789);
+    flex: 1;
 }
 
 .main #login-btn, #signup-btn {
@@ -125,9 +129,10 @@ label[for="remember-me"] {
 /* Footer section */
 .footer {
     position: relative;
+    top: 25px;
     background-color: #007bff;
     padding: 20px 0px !important;
-    margin-top: 70px;
+    margin-top: auto;
     color: #fff;
     text-align: center;
 }

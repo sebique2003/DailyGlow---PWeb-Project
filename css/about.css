@@ -98,14 +98,14 @@ body {
 }
 
 #about-intro h1 {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: bold;
     margin-bottom: 3rem;
     color: black !important;
 }
 
 #about-intro .lead {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     margin-bottom: 2.5rem;
     transition: color 0.4s ease, transform 0.5s ease;
 }
@@ -129,12 +129,12 @@ body {
 }
 
 #mission h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-bottom: 1.5rem;
 }
 
 #mission p{
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 
 #mission .container {
@@ -163,12 +163,12 @@ body {
 }
 
 #vision h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-bottom: 1.5rem;
 }
 
 #vision p{
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 
 #vision .container {
@@ -196,13 +196,8 @@ body {
 }
 
 #team h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-bottom: 1.5rem;
-}
-
-#team p {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
 }
 
 #team .row {
@@ -226,13 +221,14 @@ body {
 }
 
 #team h4 {
-    font-size: 1.2rem;
+    font-size: 0.9rem !important;
     margin-bottom: 0.5rem;
 }
 
 #team p {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: #777;
+    margin-bottom: 35px;
 }
 
 /* Contact Section */
@@ -244,12 +240,12 @@ body {
 }
 
 #contact h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-bottom: 1.5rem;
 }
 
 #contact p {
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 #contact a {

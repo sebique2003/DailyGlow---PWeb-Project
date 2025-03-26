@@ -70,10 +70,9 @@ body {
 
 h2 {
     color: #333;
-    font-size: 1.4rem;
-    margin-bottom: 25px;
+    font-size: 1.4rem !important;
+    margin-bottom: 25px !important;
 }
-
 
 form .form-control {
     background-color: #fcfcfcff;

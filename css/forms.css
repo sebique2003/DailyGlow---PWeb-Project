@@ -90,17 +90,16 @@ form .form-control:focus {
 }
 
 input[type="checkbox"] {
-    width: 13.5px;
-    height: 13.5px;
-    margin-right: 10px;
+    width: 14.5px;
+    height: 14.5px;
+    margin-right: 5px;
     vertical-align: middle;
 }
 
 label[for="remember-me"] {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: #333;
     vertical-align: middle;
-    font-weight: 500;
 }
 
 .btn-primary {

@@ -44,7 +44,7 @@
         <!-- Log In -->
         <div id="login-section" class="login-section mt-5" style="display: block;">
             <h2 class="text-center">Autentificare</h2>
-            <form action="#" method="POST">
+            <form action="/login" method="POST">
                 <div class="mb-4">
                     <input type="text" class="form-control" placeholder="Email" required>
                 </div>
@@ -59,12 +59,10 @@
             </form>
         </div>
 
-
-
         <!-- Sign Up -->
         <div id="signup-section" class="signup-section mt-4" style="display: none;">
             <h2 class="text-center">Înregistrare</h2>
-            <form action="#">
+            <form action="/signup" method="POST">
                 <div class="mb-3">
                     <input type="text" class="form-control" placeholder="Username" required>
                 </div>
@@ -100,5 +98,7 @@
     <script src="/bootstrap/bootstrap.bundle.js"></script>
     <script src="/js/forms.js"></script>
     <script src="/js/remember_me.js"></script>
+    <script src="/js/login.js"></script>
+    <script src="/js/signup.js"></script>
 </body>
 </html>

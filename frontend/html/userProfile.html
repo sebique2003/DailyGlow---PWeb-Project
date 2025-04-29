@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DailyGlow</title>
+    <link rel="icon" type="image/icon" href="/trash/favicon.png">
+    <link rel="stylesheet" href="/frontend/css/userProfile.css">
+    <link rel="stylesheet" href="/frontend/css/formMsg.css">
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/fontsAwesome/css/all.min.css">
+</head>
+<body>
+
+    <div class="alert-msg"></div>
+
+    <div class="header">
+        <nav class="navbar navbar-expand-lg custom-navbar">
+            <div class="container">
+                <a class="navbar-brand" href="/frontend/html/homepage.html">DailyGlow</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/frontend/html/dashboard.html">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/frontend/html/about.html">Despre Noi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/frontend/html/contact.html">Contact</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-circle"></i> Account
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a class="dropdown-item" href="/frontend/html/forms.html" id="login-link">
+                                        <i class="fas fa-sign-in-alt"></i> Log In
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="/frontend/html/forms.html" id="signup-link">
+                                        <i class="fas fa-user-plus"></i> Sign Up
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="/frontend/html/userProfile.html" id="profile-link" style="display: none;">
+                                        <i class="fas fa-id-badge"></i> Profilul Meu
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#" id="logout-link" style="display: none;">
+                                        <i class="fas fa-sign-out-alt"></i> Log Out
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="main">
+        <div class="container">
+            <div class="profile-header text-center mb-5">
+                <h1 class="profile-title">Profilul Meu</h1>
+                <div class="profile-divider"></div>
+            </div>
+    
+            <div class="profile-info-wrapper">
+                <div class="profile-left">
+                    <div class="profile-pic-section">
+                        <div class="profile-pic-wrapper">
+                            <img id="profile-image" src="/trash/iconProfile.png" class="profile-img" alt="Profile Picture">
+                        </div>
+                        <div class="dropdown image-actions-dropdown">
+                            <button class="dropdown-toggle image-actions-btn" type="button" id="imageActionsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-cog"></i> Editează
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="imageActionsDropdown">
+                                <li>
+                                    <label class="dropdown-item" for="profile-image-input">
+                                        <i class="fas fa-upload"></i> Încarcă imagine
+                                    </label>
+                                    <input type="file" id="profile-image-input" name="profile-image" accept="image/*" onchange="previewImage(event)" style="display: none;">
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <button class="dropdown-item" onclick="resetProfileImage()">
+                                        <i class="fas fa-undo"></i> Resetează la implicită
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-right">
+                    <div class="profile-info-section">
+                        <h3 class="info-title">Date cont</h3>
+                        <form id="profile-form">
+                            <div class="form-group">
+                                <label for="username" class="form-label">Nume Utilizator</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="username" value="Utilizator123" readonly>
+                                    <button class="btn btn-edit" type="button" onclick="enableEdit('username')">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </div>
+                            </div>
+    
+                            <div class="form-group">
+                                <label for="email" class="form-label">Adresă Email</label>
+                                <div class="input-group">
+                                    <input type="email" class="form-control" id="email" value="utilizator@example.com" readonly>
+                                    <button class="btn btn-edit" type="button" onclick="enableEdit('email')">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="form-actions mt-4">
+                                <button type="button" class="btn btn-save" id="saveChangesBtn" style="display: none;">Salvează modificările</button>
+                                <button type="button" class="btn btn-cancel" id="cancelChangesBtn" style="display: none;">Anulează</button>
+                            </div>
+    
+                            <div class="form-group">
+                                <button type="button" class="btn btn-password" data-bs-toggle="collapse" data-bs-target="#passwordCollapse">
+                                    <i class="fas fa-key"></i> Schimbă parola
+                                </button>
+                                <div class="collapse mt-3" id="passwordCollapse">
+                                    <div class="card card-body password-card">
+                                        <div class="mb-3">
+                                            <label for="currentPassword" class="form-label">Parola curentă</label>
+                                            <input type="password" class="form-control" id="currentPassword" placeholder="Introdu parola curentă">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="newPassword" class="form-label">Parola nouă</label>
+                                            <input type="password" class="form-control" id="newPassword" placeholder="Introdu parola nouă">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="confirmPassword" class="form-label">Confirmă parola</label>
+                                            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirmă parola nouă">
+                                        </div>
+                                        <button type="button" class="btn btn-save" onclick="changePassword()">Salvează parola</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="history-section mt-5">
+                <h3 class="history-title">Istoricul Chart-urilor</h3>
+                <p class="history-description">Aici poți vizualiza istoricul chart-urilor tale. Urmărește-ți progresul de-a lungul timpului.</p>
+                <div class="history-list">
+                    <div class="history-item">
+                        <div class="history-date">10 aprilie 2025</div>
+                        <div class="history-content">Chart detalii</div>
+                    </div>
+                    <div class="history-item">
+                        <div class="history-date">9 aprilie 2025</div>
+                        <div class="history-content">Chart detalii</div>
+                    </div>
+                    <div class="history-item">
+                        <div class="history-date">8 aprilie 2025</div>
+                        <div class="history-content">Chart detalii</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer compact-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-3 mb-lg-0">
+                    <h5 class="footer-brand mb-2">DailyGlow</h5>
+                    <p class="footer-about">Transformă-ți rutina zilnică într-un plan echilibrat, cu o viziune clară asupra pașilor tăi către sănătate.</p>
+                </div>
+                <div class="col-lg-4 mb-3 mb-lg-0">
+                    <h5 class="footer-title">Link-uri rapide</h5>
+                    <ul class="footer-links">
+                        <li><a href="/frontend/html/dashboard.html"><i class="fas fa-chart-line me-1"></i>Dashboard</a></li>
+                        <li><a href="/frontend/html/about.html"><i class="fas fa-info-circle me-1"></i>Despre noi</a></li>
+                        <li><a href="/frontend/html/contact.html"><i class="fas fa-envelope me-1"></i>Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="footer-title">Newsletter</h5>
+                    <div class="newsletter-form">
+                        <div class="input-group mb-2">
+                            <input type="email" class="form-control form-control-sm" placeholder="Email" aria-label="Email">
+                            <button class="btn btn-success btn-sm" type="button"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                        <p class="newsletter-text">Primește sfaturi și oferte!</p>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-divider my-3">
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-start">
+                        <ul class="legal-links">
+                            <li><a href="/frontend/html/privacy.html">Confidențialitate</a></li>
+                            <li><a href="/frontend/html/terms.html">Termeni</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <p class="copyright mb-0">&copy; 2025 DailyGlow</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/bootstrap/bootstrap.bundle.js"></script>
+    <script src="/frontend/js/forms.js"></script>
+    <script src="/frontend/js/profile.js"></script>
+</body>
+</html>

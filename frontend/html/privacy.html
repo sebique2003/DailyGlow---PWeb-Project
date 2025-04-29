@@ -3,36 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Politica de Confidențialitate</title>
+    <title>DailyGlow</title>
     <link rel="icon" type="image/icon" href="/trash/favicon.png">
     <link rel="stylesheet" href="/frontend/css/privacy.css">
     <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/fontsAwesome/css/all.min.css">
 </head>
 <body>
 
     <div class="header">
-    <nav class="navbar navbar-expand-lg custom-navbar">
-        <div class="container">
-            <a class="navbar-brand" href="/frontend/html/homepage.html">DailyGlow</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="/frontend/html/dashboard.html">Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/frontend/html/about.html">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/frontend/html/contact.html">Contact</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-bs-toggle="dropdown">Account</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/frontend/html/forms.html">Log In</a></li>
-                            <li><a class="dropdown-item" href="/frontend/html/forms.html">Sign Up</a></li>
-                        </ul>
-                    </li>
-                </ul>
+        <nav class="navbar navbar-expand-lg custom-navbar">
+            <div class="container">
+                <a class="navbar-brand" href="/frontend/html/homepage.html">DailyGlow</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/frontend/html/dashboard.html">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/frontend/html/about.html">Despre Noi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/frontend/html/contact.html">Contact</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-circle"></i> Account
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a class="dropdown-item" href="/frontend/html/forms.html" id="login-link">
+                                        <i class="fas fa-sign-in-alt"></i> Log In
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="/frontend/html/forms.html" id="signup-link">
+                                        <i class="fas fa-user-plus"></i> Sign Up
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="/frontend/html/userProfile.html" id="profile-link" style="display: none;">
+                                        <i class="fas fa-id-badge"></i> Profilul Meu
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#" id="logout-link" style="display: none;">
+                                        <i class="fas fa-sign-out-alt"></i> Log Out
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
     </div>
 
     <div class="main">
@@ -101,22 +128,50 @@
     </div>
     </div>
 
-    <div class="footer">
-    <footer class="footer">
-        <div class="container text-center">
-            <div class="footer-links mb-3">
-                <a href="/frontend/html/privacy.html">Politica de confidențialitate</a>
-                <a href="/frontend/html/privacy.html">Termeni și condiții</a>
+    <div class="footer compact-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-3 mb-lg-0">
+                    <h5 class="footer-brand mb-2">DailyGlow</h5>
+                    <p class="footer-about">Transformă-ți rutina zilnică într-un plan echilibrat, cu o viziune clară asupra pașilor tăi către sănătate.</p>
+                </div>
+                <div class="col-lg-4 mb-3 mb-lg-0">
+                    <h5 class="footer-title">Link-uri rapide</h5>
+                    <ul class="footer-links">
+                        <li><a href="/frontend/html/dashboard.html"><i class="fas fa-chart-line me-1"></i>Dashboard</a></li>
+                        <li><a href="/frontend/html/about.html"><i class="fas fa-info-circle me-1"></i>Despre noi</a></li>
+                        <li><a href="/frontend/html/contact.html"><i class="fas fa-envelope me-1"></i>Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="footer-title">Newsletter</h5>
+                    <div class="newsletter-form">
+                        <div class="input-group mb-2">
+                            <input type="email" class="form-control form-control-sm" placeholder="Email" aria-label="Email">
+                            <button class="btn btn-success btn-sm" type="button"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                        <p class="newsletter-text">Primește sfaturi și oferte!</p>
+                    </div>
+                </div>
             </div>
-            <div class="newsletter-form mb-3">
-                <input type="email" class="form-control d-inline-block w-auto" placeholder="Abonează-te...">
-                <button class="subscribe-btn">Abonează-te</button>
+            <hr class="footer-divider my-3">
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-start">
+                        <ul class="legal-links">
+                            <li><a href="/frontend/html/privacy.html">Confidențialitate</a></li>
+                            <li><a href="/frontend/html/terms.html">Termeni</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <p class="copyright mb-0">&copy; 2025 DailyGlow</p>
+                    </div>
+                </div>
             </div>
-            <p class="footer-text">&copy; 2025 DailyGlow. Toate drepturile rezervate.</p>
         </div>
-    </footer>
     </div>
 
     <script src="/bootstrap/bootstrap.bundle.js"></script>
+    <script src="/frontend/js/forms.js"></script>
 </body>
 </html>

@@ -122,7 +122,7 @@ body {
     font-size: 1.1rem;
 }
 
-/* Main Content Styles */
+/* Main Section */
 .main {
     flex: 1;
     padding: 3rem 0;
@@ -134,7 +134,6 @@ body {
     padding: 0 15px;
 }
 
-/* Profile Header */
 .profile-header {
     margin-bottom: 3rem;
     text-align: center;
@@ -361,7 +360,6 @@ body {
     background-color: white;
 }
 
-/* Form Buttons */
 .form-actions {
     display: flex;
     gap: 1.2rem;
@@ -412,7 +410,6 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* History Section */
 .history-section {
     background-color: white;
     border-radius: 12px;
@@ -465,12 +462,11 @@ body {
     font-size: 0.9rem;
 }
 
-/* btn icons */
+/* icons */
 .fas {
     font-size: 0.9rem;
 }
 
-/* Footer section */
 /* Footer section */
 .footer {
     background-color: #2c3e50;

@@ -125,6 +125,7 @@ body {
 /* Main section */
 .main {
     padding: 60px 15px;
+    flex: 1;
 }
 
 .main h1 {

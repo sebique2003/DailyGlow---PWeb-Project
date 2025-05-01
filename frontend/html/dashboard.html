@@ -63,49 +63,94 @@
     </div>
 
     <div class="main">
-        <div class="container mt-5">
-            <h1 class="text-center">Monitorizarea Zilnică a Sănătății Tale</h1>
-            <p class="lead">Locul ideal unde îți poți urmări progresul zilnic și îți poți îmbunătăți stilul de viață.</p>
-            
-            <div class="card p-4 mt-4">
-                <h3 id="form-title">Introdu Datele Tale</h3>
+        <div class="main-container">
+            <h1 class="page-title">Monitorizarea Zilnică a Sănătății Tale</h1>
+            <p class="page-subtitle">Completează datele tale pentru a vedea analiza personalizată.</p>
+    
+            <div class="form-card">
+                <h3 class="form-title">Introdu Datele Tale</h3>
                 <form id="healthForm">
                     <div class="mb-3">
-                        <label for="sleep" class="form-label">Ore dormite 💤</label>
-                        <input type="number" class="form-control" id="sleep" min="0" max="24" required>
+                        <label for="sleep" class="form-label"><i class="fas fa-moon me-1"></i> Ore dormite</label>
+                        <input type="number" class="form-control" id="sleep" min="0" max="24" placeholder="Ex: 7.5" required>
                     </div>
                     <div class="mb-3">
-                        <label for="calories" class="form-label">Calorii consumate 🍴</label>
-                        <input type="number" class="form-control" id="calories" required>
+                        <label for="calories" class="form-label"><i class="fas fa-utensils me-1"></i> Calorii consumate</label>
+                        <input type="number" class="form-control" id="calories" placeholder="Ex: 2000" required>
                     </div>
                     <div class="mb-3">
-                        <label for="water" class="form-label">Litri de apă consumați 💧</label>
-                        <input type="number" class="form-control" id="water" step="0.1" required>
+                        <label for="water" class="form-label"><i class="fas fa-tint me-1"></i> Litri de apă consumați</label>
+                        <input type="number" class="form-control" id="water" step="0.1" placeholder="Ex: 2.5" required>
                     </div>
                     <div class="mb-3">
-                        <label for="steps" class="form-label">Pași efectuați 👣</label>
-                        <input type="number" class="form-control" id="steps" required>
+                        <label for="steps" class="form-label"><i class="fas fa-walking me-1"></i> Pași efectuați</label>
+                        <input type="number" class="form-control" id="steps" placeholder="Ex: 8500" required>
                     </div>
-                    <button type="button" class="btn btn-primary w-100" onclick="generateChart()">Află</button>
+                    <div class="d-flex justify-content-center mt-4">
+                        <button type="button" class="btn btn-success w-100" id="generateBtn">
+                            <i class="fas fa-chart-line me-2"></i> Generează Rezultate
+                        </button>
+                    </div>
+                    <p id="message" class="results-message">
+                        <i class="fas fa-lightbulb me-2"></i> Completează datele și apasă pe <b>"Generează Rezultate"</b> pentru a vedea analiza personalizată a sănătății tale.
+                    </p>
                 </form>
-            </div>
-            
-            <div class="card p-4 mt-4">
-                <h3 id="rez">Rezultatele Tale</h3>
-                <canvas id="healthChart"></canvas>
-                <p id="message" class="mt-3 text-center text-muted">
-                    Nu ai generat niciun rezultat încă. Completează datele și apasă pe "Află" pentru a vedea rezultatele tale 💡
-                </p>
             </div>
         </div>
     </div>
-
+    
+    <!-- Chart-->
+    <div class="modal fade" id="resultsModal" tabindex="-1" aria-labelledby="resultsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resultsModalLabel">Rezultatele Tale</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Închide"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="chart-container mb-4">
+                        <canvas id="healthChart"></canvas>
+                    </div>
+                    <div class="results-summary" id="resultsSummary">
+                        <div class="summary-card sleep">
+                            <h4 class="summary-title"><i class="fas fa-moon"></i> Somn</h4>
+                            <div class="summary-value" id="sleep-value">-</div>
+                            <div class="summary-description">Recomandare: 7-9 ore pe noapte</div>
+                            <div class="summary-rating"><i class="fas fa-star"></i><span class="rating-text good">-</span></div>
+                        </div>
+                        <div class="summary-card calories">
+                            <h4 class="summary-title"><i class="fas fa-utensils"></i> Calorii</h4>
+                            <div class="summary-value" id="calories-value">-</div>
+                            <div class="summary-description">Recomandare: 2000-2500 kcal/zi</div>
+                            <div class="summary-rating"><i class="fas fa-star"></i><span class="rating-text good">-</span></div>
+                        </div>
+                        <div class="summary-card water">
+                            <h4 class="summary-title"><i class="fas fa-tint"></i> Apă</h4>
+                            <div class="summary-value" id="water-value">-</div>
+                            <div class="summary-description">Recomandare: 2-3 litri/zi</div>
+                            <div class="summary-rating"><i class="fas fa-star"></i><span class="rating-text average">-</span></div>
+                        </div>
+                        <div class="summary-card steps">
+                            <h4 class="summary-title"><i class="fas fa-walking"></i> Pași</h4>
+                            <div class="summary-value" id="steps-value">-</div>
+                            <div class="summary-description">Recomandare: 8,000-10,000/zi</div>
+                            <div class="summary-rating"><i class="fas fa-star"></i><span class="rating-text good">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Închide</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <div class="footer compact-footer">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-3 mb-lg-0">
                     <h5 class="footer-brand mb-2">DailyGlow</h5>
-                    <p class="footer-about">Transformă-ți rutina zilnică într-un plan echilibrat, cu o viziune clară asupra pașilor tăi către sănătate.</p>
+                    <p class="footer-about">Transformă-ți rutina zilnică într-un plan echilibrat pentru sănătate.</p>
                 </div>
                 <div class="col-lg-4 mb-3 mb-lg-0">
                     <h5 class="footer-title">Link-uri rapide</h5>
@@ -144,8 +189,9 @@
     </div>
 
     <script src="/bootstrap/bootstrap.bundle.js"></script>
-    <script src="/frontend/js/forms.js"></script>
     <script src="/chart/chart.js"></script>
+    <script src="/frontend/js/forms.js"></script>
     <script src="/chart/generateChart.js"></script>
+
 </body>
 </html>

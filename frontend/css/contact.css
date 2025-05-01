@@ -132,6 +132,7 @@ body {
     background: transparent;
     box-shadow: none;
     text-align: left;
+    flex: 1;
 }
 
 .main h1 {

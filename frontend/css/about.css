@@ -126,26 +126,27 @@ body {
 .main {
     max-width: 1350px;
     margin: 0 auto;
-    padding: 2rem 0;
+    padding: 2rem 2rem;
+    flex: 1;
 }
 
 #about-intro {
-    margin-bottom: 25px;
-    padding: 4rem 1rem;
+    margin-bottom: 30px;
+    padding: 3rem 1.5rem;
     text-align: center;
     border-radius: 8px;
 }
 
 #about-intro h1 {
-    font-size: 2.7rem;
+    font-size: 2.3rem;
     font-weight: bold;
-    margin-bottom: 3.1rem;
+    margin-bottom: 2.5rem;
     color: black !important;
 }
 
 #about-intro .lead {
-    font-size: 1.1rem;
-    margin-bottom: 2.8rem;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
     font-weight: 350;
     transition: color 0.4s ease, transform 0.5s ease;
 }
@@ -163,18 +164,25 @@ body {
 
 #mission {
     background-color: #f8f9fa;
-    padding: 4rem 1rem;
-    margin-bottom: 25px;
+    padding: 3rem 1.5rem;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+}
+
+#mission:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 #mission h2 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
     color: #2c3e50 !important;
+    transition: color 0.3s ease;
 }
 
-#mission p{
-    font-size: 0.9rem;
+#mission p {
+    font-size: 0.85rem;
 }
 
 #mission .container {
@@ -197,17 +205,24 @@ body {
 
 #vision {
     background-color: #f8f9fa;
-    margin-bottom: 25px;
-    padding: 4rem 1rem;
+    margin-bottom: 2rem;
+    padding: 3rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+#vision:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 #vision h2 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
     color: #2c3e50 !important;
+    transition: color 0.3s ease;
 }
 
-#vision p{
+#vision p {
     font-size: 0.8rem;
 }
 
@@ -231,7 +246,7 @@ body {
 
 /* Team Section */
 #team {
-    padding: 4rem 1rem;
+    padding: 3rem 1.5rem;
 }
 
 #team h2 {
@@ -273,7 +288,7 @@ body {
 
 #contact {
     margin-bottom: 50px;
-    padding: 4rem 1rem;
+    padding: 3rem 1.5rem;
     text-align: center;
 }
 
@@ -495,51 +510,43 @@ body {
     }
 
     .main {
+        padding: 1rem 1.5rem;
+    }
+
+    #about-intro {
         padding: 2rem 1rem;
+        margin-bottom: 20px;
     }
 
-    #about-intro h1 {
-        font-size: 2rem;
+    #mission, #vision {
+        padding: 1.5rem 1rem;
+        margin-bottom: 20px;
+        box-shadow: none;
     }
 
-    #about-intro .lead {
-        font-size: 0.9rem;
-    }
-
-    .about-image img {
-        border-radius: 5px;
-    }
-
-    #mission h2,
-    #vision h2,
-    #team h2 {
-        font-size: 1.8rem;
-    }
-
-    #mission .container,
-    #vision .container,
     #team .row {
         flex-direction: column;
         align-items: center;
-        gap: 1rem;
-    }
-
-    #mission {
-        background-color: transparent !important;
-    }
-
-    #vision {
-        background-color: transparent !important;
-    }
-
-    #team .col-md-4 {
-        margin-bottom: 2rem;
-        text-align: center;
+        gap: 1.5rem;
     }
 
     #team img {
-        width: 120px;
-        height: 120px;
+        width: 130px;
+        height: 130px;
+    }
+
+    #contact {
+        padding: 2rem 1rem;
+        margin-bottom: 30px;
+    }
+
+    #contact h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    #contact p {
+        font-size: 0.9rem;
     }
 
     .footer {
@@ -642,50 +649,41 @@ body {
     }
 
     .main {
-        padding: 1.5rem 0.5rem;
+        padding: 1rem;
     }
 
     #about-intro h1 {
-        font-size: 1.95rem;
-    }
-
-    #about-intro .lead {
-        font-size: 0.85rem;
-    }
-
-    #mission h2,
-    #vision h2,
-    #team h2 {
-        font-size: 1.75rem;
-    }
-
-    #mission {
-        background-color: transparent !important;
-    }
-
-    #vision {
-        background-color: transparent !important;
-    }
-
-    .about-image img {
-        border-radius: 5px;
-    }
-
-    #team .col-md-4 {
-        width: 100%;
-    }
-
-    #team img {
-        width: 100px;
-        height: 100px;
-    }
-
-    #contact h2 {
         font-size: 2rem;
     }
 
+    #about-intro .lead {
+        font-size: 0.8rem;
+    }
+
+    #mission, #vision, #team, #contact {
+        padding: 1.5rem 1rem;
+        margin-bottom: 20px;
+        box-shadow: none;
+    }
+
+    #team .row {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    #team img {
+        width: 120px;
+        height: 120px;
+    }
+
+    #contact h2 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+    
     #contact p {
-        font-size: 1rem;
+        font-size: 0.85rem;
     }
 
     .footer {

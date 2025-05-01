@@ -79,7 +79,7 @@
                             <img id="profile-image" src="/trash/iconProfile.png" class="profile-img" alt="Profile Picture">
                         </div>
                         <div class="dropdown image-actions-dropdown">
-                            <button class="dropdown-toggle image-actions-btn" type="button" id="imageActionsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="dropdown-toggle image-actions-btn btn-success" type="button" id="imageActionsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fas fa-cog"></i> Editează
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="imageActionsDropdown">
@@ -107,54 +107,36 @@
                                 <label for="username" class="form-label">Nume Utilizator</label>
                                 <div class="input-group">
                                     <input type="text" class="form-control" id="username" value="Utilizator123" readonly>
-                                    <button class="btn btn-edit" type="button" onclick="enableEdit('username')">
+                                    <button class="btn btn-edit btn-outline-success" type="button" onclick="enableEdit('username')">
                                         <i class="fas fa-edit"></i>
                                     </button>
                                 </div>
                             </div>
-    
+            
                             <div class="form-group">
                                 <label for="email" class="form-label">Adresă Email</label>
                                 <div class="input-group">
                                     <input type="email" class="form-control" id="email" value="utilizator@example.com" readonly>
-                                    <button class="btn btn-edit" type="button" onclick="enableEdit('email')">
+                                    <button class="btn btn-edit btn-outline-success" type="button" onclick="enableEdit('email')">
                                         <i class="fas fa-edit"></i>
                                     </button>
                                 </div>
                             </div>
-
+            
                             <div class="form-actions mt-4">
-                                <button type="button" class="btn btn-save" id="saveChangesBtn" style="display: none;">Salvează modificările</button>
-                                <button type="button" class="btn btn-cancel" id="cancelChangesBtn" style="display: none;">Anulează</button>
+                                <button type="button" class="btn btn-save btn-success" id="saveChangesBtn" style="display: none;">Salvează modificările</button>
+                                <button type="button" class="btn btn-cancel btn-danger" id="cancelChangesBtn" style="display: none;">Anulează</button>
                             </div>
-    
-                            <div class="form-group">
-                                <button type="button" class="btn btn-password" data-bs-toggle="collapse" data-bs-target="#passwordCollapse">
-                                    <i class="fas fa-key"></i> Schimbă parola
+                            <div class="text-end mt-2">
+                                <button type="button" class="btn btn-link p-0 small text-decoration-none text-muted" data-bs-toggle="modal" data-bs-target="#passwordModal">
+                                    <i class="fas fa-key me-2"></i>Resetează parola
                                 </button>
-                                <div class="collapse mt-3" id="passwordCollapse">
-                                    <div class="card card-body password-card">
-                                        <div class="mb-3">
-                                            <label for="currentPassword" class="form-label">Parola curentă</label>
-                                            <input type="password" class="form-control" id="currentPassword" placeholder="Introdu parola curentă">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="newPassword" class="form-label">Parola nouă</label>
-                                            <input type="password" class="form-control" id="newPassword" placeholder="Introdu parola nouă">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="confirmPassword" class="form-label">Confirmă parola</label>
-                                            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirmă parola nouă">
-                                        </div>
-                                        <button type="button" class="btn btn-save" onclick="changePassword()">Salvează parola</button>
-                                    </div>
-                                </div>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-    
+            
             <div class="history-section mt-5">
                 <h3 class="history-title">Istoricul Chart-urilor</h3>
                 <p class="history-description">Aici poți vizualiza istoricul chart-urilor tale. Urmărește-ți progresul de-a lungul timpului.</p>
@@ -214,6 +196,36 @@
                     <div class="col-md-6 text-center text-md-end">
                         <p class="copyright mb-0">&copy; 2025 DailyGlow</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Password reset -->
+    <div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="passwordModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="passwordModalLabel">Schimbă parola</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Închide"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="currentPassword" class="form-label">Parola curentă</label>
+                        <input type="password" class="form-control" id="currentPassword" placeholder="Introdu parola curentă">
+                    </div>
+                    <div class="mb-3">
+                        <label for="newPassword" class="form-label">Parola nouă</label>
+                        <input type="password" class="form-control" id="newPassword" placeholder="Introdu parola nouă">
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirmPassword" class="form-label">Confirmă parola</label>
+                        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirmă parola nouă">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                                        <button type="button" class="btn btn-success" onclick="changePassword()">Salvează</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Închide</button>
                 </div>
             </div>
         </div>

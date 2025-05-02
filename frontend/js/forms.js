@@ -11,6 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginBtn = document.querySelector('#login-btn');
     const signupBtn = document.querySelector('#signup-btn');
 
+    const cookieToken = getCookie('token');
+    if (cookieToken && !localStorage.getItem('token')) {
+    localStorage.setItem('token', cookieToken);
+    }
+
     function hideForms() {
         loginSection?.style.setProperty('display', 'none');
         signupSection?.style.setProperty('display', 'none');
@@ -62,15 +67,31 @@ document.addEventListener('DOMContentLoaded', () => {
         showSection('signup');
     });
 
-    function showMessage(element, message, isError = false) {
-        if (!element) return;
-        element.textContent = message;
-        element.style.display = 'block';
-        element.className = `alert ${isError ? 'alert-danger' : 'alert-success'}`;
-
+    // fct div log msg
+    function showMessage(text, type = 'success') {
+        const messageDiv = document.querySelector('.alert-msg');
+        if (!messageDiv) return;
+        
+        messageDiv.textContent = text;
+    
+        if (type === 'success') {
+            messageDiv.style.backgroundColor = '#4BB543';
+        } else if (type === 'error') {
+            messageDiv.style.backgroundColor = '#FF4C4C';
+        }
+    
+        messageDiv.style.display = 'block';
+        messageDiv.style.opacity = '1';
+        messageDiv.style.top = '20px';
+    
         setTimeout(() => {
-            element.style.display = 'none';
-        }, 5000);
+            messageDiv.style.opacity = '0';
+            messageDiv.style.top = '0px';
+        }, 3000);
+    
+        setTimeout(() => {
+            messageDiv.style.display = 'none';
+        }, 3500);
     }
 
     function getCookie(name) {
@@ -101,53 +122,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // LOGIN
     async function handleLogin() {
-        const messageElement = document.querySelector('#login-message');
         try {
             const formData = new FormData(loginForm);
             const data = Object.fromEntries(formData.entries());
-
+    
             const response = await fetch('http://localhost:5000/api/auth/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),
                 credentials: 'include'
             });
-
+    
             const result = await response.json();
             if (!response.ok) throw new Error(result.msg || 'Eroare la autentificare');
-
+    
+            localStorage.setItem('token', result.token);
+            localStorage.setItem('user', JSON.stringify(result.user));
+    
             if (rememberMe?.checked) {
                 document.cookie = `token=${result.token}; path=/; max-age=${7 * 24 * 60 * 60}; SameSite=Strict`;
-            } else {
-                localStorage.setItem('token', result.token);
             }
-            localStorage.setItem('user', JSON.stringify(result.user));
-
-            showMessage(messageElement, "Autentificare reușită!", false);
+    
+            showMessage("Autentificare reușită!", 'success');
             setTimeout(() => window.location.href = '/frontend/html/userProfile.html', 1500);
         } catch (error) {
-            showMessage(messageElement, error.message, true);
+            showMessage(error.message, 'error');
             console.error('Login error:', error);
         }
     }
 
     // SIGNUP
     async function handleSignup() {
-        const messageElement = document.querySelector('#signup-message');
         try {
             const formData = new FormData(signupForm);
             const data = Object.fromEntries(formData.entries());
-
+    
             const passwordValidation = validatePassword(data.password);
             if (!passwordValidation.isValid) {
-                showMessage(messageElement, passwordValidation.message, true);
+                showMessage(passwordValidation.message, 'error');
                 return;
             }
-
+    
             if (data.password !== data.confirm_password) {
                 throw new Error('Parolele nu coincid!');
             }
-
+    
             const response = await fetch('http://localhost:5000/api/auth/signup', {
                 method: 'POST',
                 headers: {
@@ -156,16 +175,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 body: JSON.stringify(data),
             });
-
+    
             const result = await response.json();
             if (!response.ok) throw new Error(result.msg || 'Eroare la înregistrare');
-
+    
             localStorage.setItem('user', JSON.stringify(result.user));
-
-            showMessage(messageElement, "Înregistrare reușită!", false);
+    
+            showMessage("Înregistrare reușită!", 'success');
             setTimeout(() => window.location.href = '/frontend/html/dashboard.html', 1500);
         } catch (error) {
-            showMessage(messageElement, error.message, true);
+            showMessage(error.message, 'error');
             console.error('Signup error:', error);
         }
     }

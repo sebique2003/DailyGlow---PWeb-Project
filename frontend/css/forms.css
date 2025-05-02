@@ -222,32 +222,42 @@ form .btn-primary:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 0.2rem 0;
 }
 
-.remember-me {
+.remember-me-container {
     display: flex;
     align-items: center;
     gap: 0.3rem;
-    font-size: 0.9rem;
+    transition: all 0.2s ease;
 }
 
-.remember-me input[type="checkbox"] {
-    margin-top: 0.1rem;
+.remember-me-container:hover {
+    transform: translateY(-1px);
 }
 
-.forgot-password {
-    color: #6c757d;
-    font-size: 0.9rem;
-    text-decoration: none;
-    transition: color 0.2s ease;
-    white-space: nowrap;
+.remember-me-container input[type="checkbox"] {
+    width: 12px;
+    height: 12px;
+    cursor: pointer;
 }
 
-.forgot-password:hover {
-    color: #28a745;
-    text-decoration: underline;
+.remember-me-container label {
+    font-size: 0.75rem;
+    color: #495057;
+    cursor: pointer;
+    user-select: none;
+    margin-bottom: 0;
+}
+
+.remember-me-container input[type="checkbox"]:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+.remember-me-container:hover label {
+    color: #212529;
 }
 
 .login-section,

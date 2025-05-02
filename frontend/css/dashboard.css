@@ -12,6 +12,7 @@ body {
     flex-direction: column;
     font-family: Arial, sans-serif;
     overflow-x: hidden;
+    background-color: #f8f9fa !important;
 }
 
 /* Header section */
@@ -123,61 +124,53 @@ body {
 
 /* Main Section */
 .main {
-    padding: 60px 40px;
-    width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    flex: 1;
+    min-height: 100vh;
+    padding: 2rem 0;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s ease;
 }
 
-.form-card {
-    background-color: #ffffff;
-    padding: 30px 30px;
-    max-width: 600px;
+.form-wrapper {
+    max-width: 850px;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
     border-radius: 12px;
-    border: 1px solid #dee2e6;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
+    transition: all 0.3s ease;
 }
 
-.page-title {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #212529;
-    text-align: center;
+.form-wrapper:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
 }
 
-.page-subtitle {
-    font-size: 1.2rem;
-    color: #6c757d;
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-.form-title {
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
+/* FORM ELEMENTS */
 .form-label {
     font-weight: 500;
-    text-align: left;
-    display: block;
-    margin-bottom: 6px;
-    color: #343a40;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
 }
 
 .form-control {
-    border-radius: 6px;
-    padding: 10px 12px;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.results-message {
-    margin-top: 20px;
-    font-size: 0.95rem;
-    color: #6c757d;
-    text-align: center;
+.form-control:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+#healthForm #message {
+    font-size: 0.85rem;
+    transition: color 0.3s ease;
 }
 
 /* Footer section */
@@ -377,6 +370,24 @@ body {
         padding: 0.35rem 0.5rem;
     }
 
+    .main {
+        padding: 1.2rem 0 !important;
+    }
+    
+    .main .container {
+        padding: 2rem 1.8rem !important;
+    }
+    
+    .form-wrapper {
+        padding: 1.5rem !important;
+        margin: 0 auto;
+        width: 100%;
+    }
+    
+    .form-label {
+        justify-content: flex-start;
+        text-align: left;
+    }
 
     .footer {
         padding: 40px 0 20px;
@@ -477,6 +488,47 @@ body {
         padding: 0.35rem 0.5rem;
     }
 
+    .main {
+        padding: 1.5rem 0rem !important;
+        margin: 0 !important;
+        min-height: auto;
+    }
+    
+    .main .container {
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+    }
+
+    .main .container h3{
+        text-align: left !important;
+        padding: 0.5rem 0rem;
+    }
+    
+    .form-wrapper {
+        background-color: transparent !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 1rem 1rem !important;
+        width: 100% !important;
+        margin: 0 !important;
+        transition: none !important;
+    }
+    
+    .form-wrapper:hover {
+        transform: none !important;
+        box-shadow: none !important;
+    }
+    
+    .form-label {
+        justify-content: flex-start;
+        text-align: left;
+        font-size: 0.95rem;
+    }
+    
+    .form-control {
+        font-size: 0.9rem;
+    }
 
     .footer {
         padding: 20px 15px;

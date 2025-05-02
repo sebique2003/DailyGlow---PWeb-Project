@@ -12,6 +12,8 @@
 </head>
 <body>
 
+    <div class="alert-msg"></div>
+
     <div class="header">
         <nav class="navbar navbar-expand-lg custom-navbar">
             <div class="container">
@@ -74,7 +76,6 @@
         <div id="login-section" class="login-section mt-5" style="display: none;">
             <h2 class="text-center">Autentificare</h2>
             <form action="/login" method="POST" id="login-form">
-                <div id="login-message" class="alert text-center" style="display: none;"></div>
                 <div class="mb-4">
                     <input type="text" class="form-control" placeholder="Email" name="email" required>
                 </div>
@@ -82,13 +83,12 @@
                     <input type="password" class="form-control" placeholder="Password" name="password" required>
                 </div>
                 <div class="login-options-container">
-                    <div class="remember-me">
+                    <div class="remember-me-container">
                         <input type="checkbox" id="remember-me" name="remember-me">
                         <label for="remember-me">Remember me</label>
                     </div>
-                    <a href="/frontend/html/userProfile.html#change-password-section" class="forgot-password">Forgot Password?</a>
                 </div>
-                <button type="submit" class="btn btn-success w-100">Submit</button>
+                <button type="submit" class="btn btn-success w-100 mt-1">Submit</button>
             </form>
         </div>
 
@@ -96,7 +96,6 @@
         <div id="signup-section" class="signup-section mt-4" style="display: none;">
             <h2 class="text-center">Înregistrare</h2>
             <form action="/signup" method="POST" id="signup-form">
-                <div id="signup-message" class="alert text-center" style="display: none;"></div>
                 <div class="mb-3">
                     <input type="text" class="form-control" placeholder="Username" name="username" required>
                 </div>

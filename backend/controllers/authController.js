@@ -1,6 +1,6 @@
 const User = require('../db/Users');
 const bcrypt = require('bcryptjs');
-const { generateToken} = require('../utils/JWT');
+const { generateToken } = require('../utils/JWT');
 
 // middleware
 exports.checkOwnership = (req, res, next) => {
@@ -127,7 +127,7 @@ exports.changePassword = async (req, res) => {
 
     try {
         const user = await User.findById(userId);
-        
+
         if (!user) {
             return res.status(404).json({ msg: "Utilizatorul nu a fost găsit" });
         }
@@ -141,7 +141,7 @@ exports.changePassword = async (req, res) => {
         // Hash new password
         const hashedPassword = await bcrypt.hash(newPassword, 10);
         user.password = hashedPassword;
-        
+
         await user.save();
 
         res.status(200).json({ msg: "Parola a fost actualizată cu succes" });

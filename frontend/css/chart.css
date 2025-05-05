@@ -1,0 +1,58 @@
+/* position fixed centered */
+.custom-modal {
+    width: 100vw;
+    max-width: 100%;
+    height: calc(100vh - 100px);
+}
+
+.custom-modal .modal-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-modal .modal-body {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+/* hidden scroll */
+body.modal-open {
+    overflow: auto;
+    padding-right: 0 !important;
+}
+
+.modal {
+    overflow-y: auto;
+    padding-right: 0 !important;
+}
+
+.chart-container {
+    position: relative;
+    margin: 0 auto;
+    width: 90%;
+}
+
+#healthChart {
+    border-radius: 12px;
+    padding: 2.5px;
+}
+
+.chartjs-tooltip {
+    background: rgba(0, 0, 0, 0.8) !important;
+    border-radius: 8px !important;
+    padding: 10px 15px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.chartjs-legend {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.progress-bar-striped {
+    transition: width 1.5s ease-in-out;
+}
+

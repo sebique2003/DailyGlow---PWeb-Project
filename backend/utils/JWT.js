@@ -2,7 +2,7 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-// Funcția principală de generare token
+// fct generare token
 const generateToken = (userId, expiresIn = '7d') => {
     return jwt.sign(
         { id: userId },
@@ -11,7 +11,7 @@ const generateToken = (userId, expiresIn = '7d') => {
     );
 };
 
-// Verificare token
+// verificare token
 const verifyToken = (token) => {
     try {
         return jwt.verify(token, process.env.JWT_SECRET);

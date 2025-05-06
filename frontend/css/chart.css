@@ -27,32 +27,56 @@ body.modal-open {
     padding-right: 0 !important;
 }
 
+#healthChart {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 15px;
+    padding: 5.5px;
+}
+
 .chart-container {
     position: relative;
     margin: 0 auto;
     width: 90%;
+    height: 395px !important;
 }
 
-#healthChart {
-    border-radius: 12px;
-    padding: 2.5px;
+/* Responsive */
+@media (min-width: 992px) {
+    .custom-modal {
+        max-width: 1200px !important;
+        width: auto;
+    }
 }
 
-.chartjs-tooltip {
-    background: rgba(0, 0, 0, 0.8) !important;
-    border-radius: 8px !important;
-    padding: 10px 15px !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+@media (min-width: 768px) and (max-width: 991px) {
+    .custom-modal {
+        max-width: 95% !important;
+        margin: auto;
+    }
 }
 
-.chartjs-legend {
-    display: flex;
-    justify-content: center;
-    margin-top: 15px;
-    flex-wrap: wrap;
+@media (max-width: 767px) {
+    .custom-modal {
+        margin: 0;
+        max-width: 100% !important;
+        height: 100% !important;
+    }
+
+    .modal-content {
+        border-radius: 0;
+        min-height: 100vh;
+    }
 }
 
-.progress-bar-striped {
-    transition: width 1.5s ease-in-out;
+@media (min-width: 992px) {
+    .chart-container {
+        height: 45vh !important;
+    }
 }
 
+@media (max-width: 991px) {
+    .chart-container {
+        height: 35vh !important;
+    }
+}

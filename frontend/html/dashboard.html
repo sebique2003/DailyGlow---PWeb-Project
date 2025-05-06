@@ -110,9 +110,8 @@
     </div>
 
     <div class="modal fade" id="resultsModal" tabindex="-1" aria-labelledby="resultsModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-fullscreen-md-down modal-xl modal-dialog-centered custom-modal" style="max-width: 85%; min-height: 90vh";>
+        <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-sm-down custom-modal">
             <div class="modal-content border-0 shadow-lg">
-
                 <div class="modal-header bg-success text-white">
                     <h5 class="modal-title" id="resultsModalLabel">
                         <i class="fas fa-chart-line me-2"></i> Rezultatele Tale
@@ -211,10 +210,10 @@
                                     </div>
                                 </div>
                                 <div class="card-body p-3">
-                                    <div class="chart-container w-95" style="height: 400px;">
+                                    <div class="chart-container" style="position: relative; height: 45vh; width: 100%">
                                         <canvas id="healthChart"></canvas>
                                     </div>
-                                    <div class="mt-2 text-center text-muted small">
+                                    <div class="mt-1 text-center text-muted small">
                                         <i class="fas fa-info-circle me-1"></i> Zonele colorate indică intervalele
                                         optime
                                     </div>
@@ -242,9 +241,10 @@
                                         <div class="accordion" id="recommendationsAccordion">
                                             <div class="accordion-item border-0 border-bottom">
                                                 <h2 class="accordion-header">
-                                                    <button class="accordion-button collapsed bg-light py-3" type="button"
-                                                        data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                                                        aria-expanded="false" aria-controls="collapseOne">
+                                                    <button class="accordion-button collapsed bg-light py-3"
+                                                        type="button" data-bs-toggle="collapse"
+                                                        data-bs-target="#collapseOne" aria-expanded="false"
+                                                        aria-controls="collapseOne">
                                                         <i class="fas fa-bed me-2 text-info"></i> Ore de somn
                                                         <span class="badge ms-2" id="sleepScoreBadge">0%</span>
                                                     </button>

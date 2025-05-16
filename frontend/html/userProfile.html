@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="/fontsAwesome/css/all.min.css">
 </head>
+
 <body>
 
     <div class="alert-msg"></div>
@@ -18,7 +20,8 @@
         <nav class="navbar navbar-expand-lg custom-navbar">
             <div class="container">
                 <a class="navbar-brand" href="/frontend/html/homepage.html">DailyGlow</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
@@ -33,7 +36,8 @@
                             <a class="nav-link" href="/frontend/html/contact.html">Contact</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fas fa-user-circle"></i> Account
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -48,7 +52,8 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="/frontend/html/userProfile.html" id="profile-link" style="display: none;">
+                                    <a class="dropdown-item" href="/frontend/html/userProfile.html" id="profile-link"
+                                        style="display: none;">
                                         <i class="fas fa-id-badge"></i> Profilul Meu
                                     </a>
                                 </li>
@@ -71,15 +76,17 @@
                 <h1 class="profile-title">Profilul Meu</h1>
                 <div class="profile-divider"></div>
             </div>
-    
+
             <div class="profile-info-wrapper">
                 <div class="profile-left">
                     <div class="profile-pic-section">
                         <div class="profile-pic-wrapper">
-                            <img id="profile-image" src="/trash/iconProfile.png" class="profile-img" alt="Profile Picture">
+                            <img id="profile-image" src="/trash/iconProfile.png" class="profile-img"
+                                alt="Profile Picture">
                         </div>
                         <div class="dropdown image-actions-dropdown">
-                            <button class="dropdown-toggle image-actions-btn btn-success" type="button" id="imageActionsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="dropdown-toggle image-actions-btn btn-success" type="button"
+                                id="imageActionsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fas fa-cog"></i> Editează
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="imageActionsDropdown">
@@ -87,9 +94,12 @@
                                     <label class="dropdown-item" for="profile-image-input">
                                         <i class="fas fa-upload"></i> Încarcă imagine
                                     </label>
-                                    <input type="file" id="profile-image-input" name="profile-image" accept="image/*" onchange="previewImage(event)" style="display: none;">
+                                    <input type="file" id="profile-image-input" name="profile-image" accept="image/*"
+                                        onchange="previewImage(event)" style="display: none;">
                                 </li>
-                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
                                 <li>
                                     <button class="dropdown-item" onclick="resetProfileImage()">
                                         <i class="fas fa-undo"></i> Resetează la implicită
@@ -106,29 +116,36 @@
                             <div class="form-group">
                                 <label for="username" class="form-label">Nume Utilizator</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" id="username" value="Utilizator123" readonly>
-                                    <button class="btn btn-edit btn-outline-success" type="button" onclick="enableEdit('username')">
+                                    <input type="text" class="form-control" id="username" value="Utilizator123"
+                                        readonly>
+                                    <button class="btn btn-edit btn-outline-success" type="button"
+                                        onclick="enableEdit('username')">
                                         <i class="fas fa-edit"></i>
                                     </button>
                                 </div>
                             </div>
-            
+
                             <div class="form-group">
                                 <label for="email" class="form-label">Adresă Email</label>
                                 <div class="input-group">
-                                    <input type="email" class="form-control" id="email" value="utilizator@example.com" readonly>
-                                    <button class="btn btn-edit btn-outline-success" type="button" onclick="enableEdit('email')">
+                                    <input type="email" class="form-control" id="email" value="utilizator@example.com"
+                                        readonly>
+                                    <button class="btn btn-edit btn-outline-success" type="button"
+                                        onclick="enableEdit('email')">
                                         <i class="fas fa-edit"></i>
                                     </button>
                                 </div>
                             </div>
-            
+
                             <div class="form-actions mt-4">
-                                <button type="button" class="btn btn-save btn-success" id="saveChangesBtn" style="display: none;">Salvează modificările</button>
-                                <button type="button" class="btn btn-cancel btn-danger" id="cancelChangesBtn" style="display: none;">Anulează</button>
+                                <button type="button" class="btn btn-save btn-success" id="saveChangesBtn"
+                                    style="display: none;">Salvează modificările</button>
+                                <button type="button" class="btn btn-cancel btn-danger" id="cancelChangesBtn"
+                                    style="display: none;">Anulează</button>
                             </div>
                             <div class="text-end mt-2">
-                                <button type="button" class="btn btn-link p-0 small text-decoration-none text-muted" data-bs-toggle="modal" data-bs-target="#passwordModal">
+                                <button type="button" class="btn btn-link p-0 small text-decoration-none text-muted"
+                                    data-bs-toggle="modal" data-bs-target="#passwordModal">
                                     <i class="fas fa-key me-2"></i>Resetează parola
                                 </button>
                             </div>
@@ -136,10 +153,11 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="history-section mt-5">
                 <h3 class="history-title">Istoricul Chart-urilor</h3>
-                <p class="history-description">Aici poți vizualiza istoricul chart-urilor tale. Urmărește-ți progresul de-a lungul timpului.</p>
+                <p class="history-description">Aici poți vizualiza istoricul chart-urilor tale. Urmărește-ți progresul
+                    de-a lungul timpului.</p>
                 <div class="history-list">
                     <div class="history-item">
                         <div class="history-date">10 aprilie 2025</div>
@@ -163,13 +181,16 @@
             <div class="row">
                 <div class="col-lg-4 mb-3 mb-lg-0">
                     <h5 class="footer-brand mb-2">DailyGlow</h5>
-                    <p class="footer-about">Transformă-ți rutina zilnică într-un plan echilibrat, cu o viziune clară asupra pașilor tăi către sănătate.</p>
+                    <p class="footer-about">Transformă-ți rutina zilnică într-un plan echilibrat, cu o viziune clară
+                        asupra pașilor tăi către sănătate.</p>
                 </div>
                 <div class="col-lg-4 mb-3 mb-lg-0">
                     <h5 class="footer-title">Link-uri rapide</h5>
                     <ul class="footer-links">
-                        <li><a href="/frontend/html/dashboard.html"><i class="fas fa-chart-line me-1"></i>Dashboard</a></li>
-                        <li><a href="/frontend/html/about.html"><i class="fas fa-info-circle me-1"></i>Despre noi</a></li>
+                        <li><a href="/frontend/html/dashboard.html"><i class="fas fa-chart-line me-1"></i>Dashboard</a>
+                        </li>
+                        <li><a href="/frontend/html/about.html"><i class="fas fa-info-circle me-1"></i>Despre noi</a>
+                        </li>
                         <li><a href="/frontend/html/contact.html"><i class="fas fa-envelope me-1"></i>Contact</a></li>
                     </ul>
                 </div>
@@ -177,8 +198,10 @@
                     <h5 class="footer-title">Newsletter</h5>
                     <div class="newsletter-form">
                         <div class="input-group mb-2">
-                            <input type="email" class="form-control form-control-sm" placeholder="Email" aria-label="Email">
-                            <button class="btn btn-success btn-sm" type="button"><i class="fas fa-paper-plane"></i></button>
+                            <input type="email" class="form-control form-control-sm" placeholder="Email"
+                                aria-label="Email">
+                            <button class="btn btn-success btn-sm" type="button"><i
+                                    class="fas fa-paper-plane"></i></button>
                         </div>
                         <p class="newsletter-text">Primește sfaturi și oferte!</p>
                     </div>
@@ -189,8 +212,10 @@
                 <div class="row align-items-center">
                     <div class="col-md-6 text-center text-md-start">
                         <ul class="legal-links">
-                            <li><a href="/frontend/html/privacy.html">Confidențialitate</a></li>
-                            <li><a href="/frontend/html/terms.html">Termeni</a></li>
+                            <li>
+                                <a href="/frontend/html/privacy.html" target="_blank">Confidențialitate</a>
+                            </li>
+                            <li><a href="/frontend/html/terms.html" target="_blank">Termeni</a></li>
                         </ul>
                     </div>
                     <div class="col-md-6 text-center text-md-end">
@@ -201,7 +226,6 @@
         </div>
     </div>
 
-    <!-- Password reset -->
     <div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="passwordModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -212,7 +236,8 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="currentPassword" class="form-label">Parola curentă</label>
-                        <input type="password" class="form-control" id="currentPassword" placeholder="Introdu parola curentă">
+                        <input type="password" class="form-control" id="currentPassword"
+                            placeholder="Introdu parola curentă">
                     </div>
                     <div class="mb-3">
                         <label for="newPassword" class="form-label">Parola nouă</label>
@@ -220,7 +245,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="confirmPassword" class="form-label">Confirmă parola</label>
-                        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirmă parola nouă">
+                        <input type="password" class="form-control" id="confirmPassword"
+                            placeholder="Confirmă parola nouă">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -235,4 +261,5 @@
     <script src="/frontend/js/forms.js"></script>
     <script src="/frontend/js/profile.js"></script>
 </body>
+
 </html>

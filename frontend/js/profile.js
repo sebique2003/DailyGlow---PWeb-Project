@@ -8,26 +8,41 @@ function enableEdit(fieldId) {
 }
 
 // fct pt reset profile pic
-function resetProfileImage() {
-    const defaultImage = "/trash/iconProfile.png";
-    document.getElementById('profile-image').src = defaultImage;
+async function resetProfileImage() {
+    try {
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (!user?._id) throw new Error('User neautentificat');
 
-    // update storage
-    const user = JSON.parse(localStorage.getItem('user')) || {};
-    user.profileImage = defaultImage;
-    localStorage.setItem('user', JSON.stringify(user));
-
-    if (user._id) {
-        fetch(`/api/user/${user._id}`, {
+        const response = await fetch(`http://localhost:5000/api/auth/user/${user._id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify({
-                profileImage: defaultImage
+                profileImage: '/trash/iconProfile.png' // Trimitem direct calea imaginii default
             })
         });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.msg || 'Eroare la resetare');
+        }
+
+        const result = await response.json();
+        
+        // Forțează reîncărcarea imaginii
+        const timestamp = Date.now();
+        document.getElementById('profile-image').src = `/trash/iconProfile.png?ts=${timestamp}`;
+        
+        // Actualizează localStorage
+        user.profileImage = '/trash/iconProfile.png';
+        localStorage.setItem('user', JSON.stringify(user));
+        
+        showMessage("Imagine resetată cu succes!", "success");
+    } catch (error) {
+        showMessage(error.message, "error");
+        console.error('Eroare la reset:', error);
     }
 }
 
@@ -188,24 +203,45 @@ document.getElementById('cancelChangesBtn').addEventListener('click', () => {
 });
 
 // profile img
-function previewImage(event) {
+async function previewImage(event) {
     const file = event.target.files[0];
+    if (!file) return;
 
-    if (file && file.type.startsWith('image/')) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            const imageUrl = e.target.result;
+    try {
+        const profileImg = document.getElementById('profile-image');
+        profileImg.style.opacity = '0.5';
+        
+        const formData = new FormData();
+        formData.append('profileImage', file);
+        
+        const user = JSON.parse(localStorage.getItem('user'));
+        const response = await fetch(`http://localhost:5000/api/auth/user/${user._id}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            },
+            body: formData
+        });
 
-            document.getElementById('profile-image').src = imageUrl;
-
-            const user = JSON.parse(localStorage.getItem('user')) || {};
-            user.profileImage = imageUrl;
-            localStorage.setItem('user', JSON.stringify(user));
+        if (!response.ok) throw new Error('Upload failed');
+        
+        const result = await response.json();
+        const newUrl = result.user.profileImage + '?t=' + Date.now();
+        
+        // Smooth transition
+        profileImg.style.transition = 'opacity 0.3s';
+        profileImg.onload = function() {
+            this.style.opacity = '1';
         };
-
-        reader.readAsDataURL(file);
-    } else {
-        alert("Te rog să alegi un fișier imagine.");
+        profileImg.src = newUrl;
+        
+        user.profileImage = result.user.profileImage;
+        localStorage.setItem('user', JSON.stringify(user));
+        
+        showMessage("Imagine actualizată cu succes!", "success");
+    } catch (error) {
+        showMessage(error.message, "error");
+        console.error('Upload error:', error);
     }
 }
 

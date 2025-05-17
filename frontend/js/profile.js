@@ -11,7 +11,7 @@ function enableEdit(fieldId) {
 function resetProfileImage() {
     const defaultImage = "/trash/iconProfile.png";
     document.getElementById('profile-image').src = defaultImage;
-    
+
     // update storage
     const user = JSON.parse(localStorage.getItem('user')) || {};
     user.profileImage = defaultImage;
@@ -21,9 +21,9 @@ function resetProfileImage() {
         fetch(`/api/user/${user._id}`, {
             method: 'PUT',
             headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`
-                    },
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            },
             body: JSON.stringify({
                 profileImage: defaultImage
             })
@@ -63,7 +63,7 @@ async function changePassword() {
     const currentPassword = document.getElementById('currentPassword').value;
     const newPassword = document.getElementById('newPassword').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
-    
+
     if (!currentPassword || !newPassword || !confirmPassword) {
         showMessage("Toate câmpurile sunt obligatorii!", "error");
         return;
@@ -74,14 +74,14 @@ async function changePassword() {
         showMessage(messageElement, passwordValidation.message, true);
         return;
     }
-    
+
     if (newPassword !== confirmPassword) {
         showMessage("Parolele nu se potrivesc!", "error");
         return;
     }
-    
+
     const user = JSON.parse(localStorage.getItem('user'));
-    
+
     try {
         const response = await fetch(`http://localhost:5000/api/auth/change-password/${user._id}`, {
             method: 'PUT',
@@ -94,9 +94,9 @@ async function changePassword() {
                 newPassword
             })
         });
-        
+
         const data = await response.json();
-        
+
         if (response.ok) {
             showMessage("Parola a fost schimbată cu succes!", "success");
             // Reset form
@@ -142,15 +142,7 @@ document.getElementById('saveChangesBtn').addEventListener('click', async () => 
     const newUsername = document.getElementById('username').value;
     const newEmail = document.getElementById('email').value;
     const profileImage = localStorage.getItem('profileImage');
-
     const user = JSON.parse(localStorage.getItem('user'));
-
-    console.log("User ID: ", user._id);
-
-    if (!user._id) {
-        alert("ID-ul utilizatorului nu este definit!");
-        return;
-    }
 
     const response = await fetch(`http://localhost:5000/api/auth/user/${user._id}`, {
         method: 'PUT',
@@ -172,6 +164,11 @@ document.getElementById('saveChangesBtn').addEventListener('click', async () => 
         const updatedUser = { ...user, username: newUsername, email: newEmail, profileImage };
         localStorage.setItem('user', JSON.stringify(updatedUser));
         showMessage("Datele au fost salvate cu succes!", "success");
+        // ascunde btn de save si cancel
+        document.getElementById('username').setAttribute('readonly', true);
+        document.getElementById('email').setAttribute('readonly', true);
+        document.getElementById('saveChangesBtn').style.display = 'none';
+        document.getElementById('cancelChangesBtn').style.display = 'none';
     } else {
         showMessage(responseData.msg || "Eroare la salvare.", "error");
     }

@@ -86,36 +86,44 @@ exports.login = async (req, res) => {
 // update user profile
 exports.updateUser = async (req, res) => {
     const userId = req.params.id;
-    const { username, email, profileImage } = req.body;
+    const { username, email, profileImage: newProfileImage } = req.body;
+    const uploadedImage = req.file ? `/uploads/profile/${req.file.filename}` : undefined;
 
     try {
         const user = await User.findById(userId);
+        if (!user) return res.status(404).json({ msg: "Utilizatorul nu a fost găsit" });
 
-        if (!user) {
-            return res.status(404).json({ msg: "Utilizatorul nu a fost găsit" });
+        if (username) {
+            const existingUsername = await User.findOne({ username, _id: { $ne: userId } });
+            if (existingUsername) return res.status(400).json({ msg: "Username deja folosit" });
+            user.username = username;
         }
 
-        const existingUsername = await User.findOne({ username, _id: { $ne: userId } });
-        if (existingUsername) {
-            return res.status(400).json({ msg: "Username deja folosit" });
+        if (email) {
+            const existingEmail = await User.findOne({ email, _id: { $ne: userId } });
+            if (existingEmail) return res.status(400).json({ msg: "Email deja folosit" });
+            user.email = email;
         }
 
-        const existingEmail = await User.findOne({ email, _id: { $ne: userId } });
-        if (existingEmail) {
-            return res.status(400).json({ msg: "Email deja folosit" });
+        if (uploadedImage) {
+            user.profileImage = uploadedImage;
+        } else if (newProfileImage !== undefined) {
+            user.profileImage = newProfileImage;
         }
-
-        user.username = username || user.username;
-        user.email = email || user.email;
-        user.profileImage = profileImage || user.profileImage;
 
         await user.save();
 
         res.status(200).json({
             msg: "Datele utilizatorului au fost actualizate",
-            user: { username: user.username, email: user.email, profileImage: user.profileImage }
+            user: {
+                _id: user._id,
+                username: user.username,
+                email: user.email,
+                profileImage: user.profileImage
+            }
         });
     } catch (err) {
+        console.error('Eroare în updateUser:', err);
         res.status(500).json({ msg: "Eroare la actualizarea datelor", error: err.message });
     }
 };
@@ -132,13 +140,11 @@ exports.changePassword = async (req, res) => {
             return res.status(404).json({ msg: "Utilizatorul nu a fost găsit" });
         }
 
-        // Verify current password
         const isMatch = await bcrypt.compare(currentPassword, user.password);
         if (!isMatch) {
             return res.status(400).json({ msg: "Parola curentă este incorectă" });
         }
 
-        // Hash new password
         const hashedPassword = await bcrypt.hash(newPassword, 10);
         user.password = hashedPassword;
 

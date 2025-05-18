@@ -20,7 +20,7 @@ async function resetProfileImage() {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify({
-                profileImage: '/trash/iconProfile.png' // Trimitem direct calea imaginii default
+                profileImage: '/trash/iconProfile.png'
             })
         });
 
@@ -29,16 +29,13 @@ async function resetProfileImage() {
             throw new Error(errorData.msg || 'Eroare la resetare');
         }
 
-        const result = await response.json();
-        
-        // Forțează reîncărcarea imaginii
         const timestamp = Date.now();
         document.getElementById('profile-image').src = `/trash/iconProfile.png?ts=${timestamp}`;
-        
+
         // Actualizează localStorage
         user.profileImage = '/trash/iconProfile.png';
         localStorage.setItem('user', JSON.stringify(user));
-        
+
         showMessage("Imagine resetată cu succes!", "success");
     } catch (error) {
         showMessage(error.message, "error");
@@ -202,18 +199,21 @@ document.getElementById('cancelChangesBtn').addEventListener('click', () => {
     document.getElementById('cancelChangesBtn').style.display = 'none';
 });
 
-// profile img
+// preview img
 async function previewImage(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
     const file = event.target.files[0];
     if (!file) return;
 
     try {
         const profileImg = document.getElementById('profile-image');
         profileImg.style.opacity = '0.5';
-        
+
         const formData = new FormData();
         formData.append('profileImage', file);
-        
+
         const user = JSON.parse(localStorage.getItem('user'));
         const response = await fetch(`http://localhost:5000/api/auth/user/${user._id}`, {
             method: 'PUT',
@@ -224,25 +224,31 @@ async function previewImage(event) {
         });
 
         if (!response.ok) throw new Error('Upload failed');
-        
+
         const result = await response.json();
         const newUrl = result.user.profileImage + '?t=' + Date.now();
-        
-        // Smooth transition
-        profileImg.style.transition = 'opacity 0.3s';
-        profileImg.onload = function() {
-            this.style.opacity = '1';
+
+        // Preîncarcă imaginea
+        const tempImg = new Image();
+        tempImg.onload = () => {
+            profileImg.src = newUrl;
+            profileImg.style.transition = 'opacity 0.3s';
+            profileImg.style.opacity = '1'; // revine la normal când imaginea e gata
         };
-        profileImg.src = newUrl;
-        
+
+        profileImg.style.opacity = '0.5'; // fade-out până se încarcă noua imagine
+        tempImg.src = newUrl; // începe preîncărcarea
+
+        // update localStorage
         user.profileImage = result.user.profileImage;
         localStorage.setItem('user', JSON.stringify(user));
-        
-        showMessage("Imagine actualizată cu succes!", "success");
+
     } catch (error) {
         showMessage(error.message, "error");
         console.error('Upload error:', error);
     }
+
+    return false;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -256,14 +262,36 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('username').value = user.username;
         document.getElementById('email').value = user.email;
 
-        if (user.profileImage) {
-            document.getElementById('profile-image').src = user.profileImage;
-        }
+        const profileImg = document.getElementById('profile-image');
+        const imageUrl = user.profileImage || '/trash/iconProfile.png';
+
+        const tempImg = new Image();
+        tempImg.onload = () => {
+            profileImg.src = imageUrl;
+            profileImg.style.display = 'block';
+        };
+        tempImg.src = imageUrl;
 
         document.getElementById('profile-link').style.display = 'block';
         document.getElementById('logout-link').style.display = 'block';
         document.getElementById('login-link').style.display = 'none';
         document.getElementById('signup-link').style.display = 'none';
+
+        const fileInput = document.querySelector('input[type="file"]');
+        if (fileInput) {
+            const newFileInput = fileInput.cloneNode(true);
+            fileInput.parentNode.replaceChild(newFileInput, fileInput);
+
+            newFileInput.addEventListener('change', previewImage);
+
+            const form = newFileInput.closest('form');
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    return false;
+                });
+            }
+        }
 
     } catch (err) {
         console.error("Eroare la profil:", err);

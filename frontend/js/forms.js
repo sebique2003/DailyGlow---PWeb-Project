@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Initial logic to check the URL parameters
+    // url params
     const params = new URLSearchParams(window.location.search);
     const formType = params.get('form');
     if (formType === 'signup') {
@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         localStorage.clear();
         document.cookie = 'token=; Max-Age=0; path=/;';
-        window.location.href = '/frontend/html/homepage.html';
+        window.location.href = '/frontend/html/forms.html';
     });
 
     toggleNavbar();
